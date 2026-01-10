@@ -53,3 +53,30 @@ document.getElementById('draw-button').addEventListener('click', () => {
         lottoNumbersContainer.appendChild(lottoBall);
     });
 });
+
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.body.classList.add(currentTheme);
+    if (currentTheme === 'dark-mode') {
+        toggleSwitch.checked = true;
+    }
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+     // Optional: check system preference if no local storage
+     document.body.classList.add('dark-mode');
+     toggleSwitch.checked = true;
+}
+
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', ''); // Or 'light-mode' if you have one
+    }
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);

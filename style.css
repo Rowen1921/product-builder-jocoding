@@ -1,24 +1,51 @@
+:root {
+    --bg-color: #f0f2f5;
+    --container-bg: white;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-bg: #4CAF50;
+    --button-text: white;
+    --button-hover: #45a049;
+    --button-shadow: rgba(76, 175, 80, 0.4);
+    --button-hover-shadow: rgba(76, 175, 80, 0.5);
+}
+
+body.dark-mode {
+    --bg-color: #18191a;
+    --container-bg: #242526;
+    --text-color: #e4e6eb;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --button-bg: #4CAF50; /* Keep button color or adjust if needed */
+    --button-text: white;
+    --button-hover: #45a049;
+    --button-shadow: rgba(76, 175, 80, 0.4);
+    --button-hover-shadow: rgba(76, 175, 80, 0.5);
+}
+
 body {
     font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: subtle-noise.png;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     text-align: center;
-    background-color: white;
+    background-color: var(--container-bg);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position: relative;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 30px;
 }
 
@@ -27,34 +54,80 @@ h1 {
     justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
+    flex-wrap: wrap; /* Handle smaller screens better */
 }
 
 #draw-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
     padding: 15px 30px;
     font-size: 1.2em;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    box-shadow: 0 4px 15px var(--button-shadow);
 }
 
 #draw-button:hover {
-    background-color: #45a049;
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+    background-color: var(--button-hover);
+    box-shadow: 0 6px 20px var(--button-hover-shadow);
 }
 
-lotto-ball {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+/* Toggle Switch Styles */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
