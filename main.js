@@ -19,8 +19,8 @@ class LottoBall extends HTMLElement {
                     color: white;
                     font-size: 1.5em;
                     font-weight: bold;
-                    background: radial-gradient(circle at 20px 20px, ${color}, #333);
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                    background-color: ${color};
+                    border: 2px solid rgba(0,0,0,0.1);
                 }
             </style>
             <div class="ball">${number}</div>
