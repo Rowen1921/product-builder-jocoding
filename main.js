@@ -88,16 +88,21 @@ document.getElementById('draw-button').addEventListener('click', () => {
 });
 
 const historyButton = document.getElementById('history-button');
-const historySection = document.getElementById('history-section');
+const historyModal = document.getElementById('history-modal');
+const closeModalSpan = document.getElementById('close-modal');
 
 historyButton.addEventListener('click', () => {
-    if (historySection.style.display === 'none') {
-        renderHistory();
-        historySection.style.display = 'block';
-        historyButton.textContent = '기록 닫기';
-    } else {
-        historySection.style.display = 'none';
-        historyButton.textContent = '기록';
+    renderHistory();
+    historyModal.style.display = 'flex'; // Use flex to center with the updated CSS
+});
+
+closeModalSpan.addEventListener('click', () => {
+    historyModal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target == historyModal) {
+        historyModal.style.display = 'none';
     }
 });
 
