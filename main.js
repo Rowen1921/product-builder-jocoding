@@ -169,15 +169,28 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 const shareUrl = encodeURIComponent(window.location.href);
 const shareTitle = encodeURIComponent("로또 번호 추첨기 - 오늘의 행운 번호를 무료로 확인하세요!");
 
-// Initialize Kakao SDK (Replace YOUR_JAVASCRIPT_KEY with actual key if you have one, otherwise it won't work fully)
-// For this demo, we'll try to use a generic implementation or guide the user.
+// [중요] 카카오톡 공유가 작동하려면 아래 단계를 수행해야 합니다:
+// 1. https://developers.kakao.com/ 접속 및 로그인
+// 2. '내 애플리케이션' -> '애플리케이션 추가하기'
+// 3. 앱 설정 -> '플랫폼' -> 'Web' 플랫폼 등록 -> 사이트 도메인(https://rowen1921.github.io) 등록
+// 4. 앱 키 -> 'JavaScript 키' 복사하여 아래 'YOUR_KAKAO_JS_KEY' 부분에 붙여넣기
+const KAKAO_JS_KEY = 'c089c8172def97eb00c07217cae17495'; // 여기에 실제 키를 입력하세요.
+
+// Initialize Kakao SDK
 try {
-    Kakao.init('c089c8172def97eb00c07217cae17495'); // Using a demo/placeholder key. User needs their own.
+    if (!Kakao.isInitialized()) {
+        Kakao.init(KAKAO_JS_KEY);
+    }
 } catch(e) {
-    console.warn("Kakao SDK init failed (expected if key is invalid)");
+    console.warn("Kakao SDK init failed. Please check your API key and domain settings.");
 }
 
 document.getElementById('share-kakao').addEventListener('click', () => {
+    if (!Kakao.isInitialized()) {
+        alert('카카오톡 공유를 위해서는 개발자 키 설정이 필요합니다. main.js 파일을 확인해주세요.');
+        return;
+    }
+    
     try {
         Kakao.Share.sendDefault({
             objectType: 'feed',
