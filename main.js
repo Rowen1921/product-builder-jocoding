@@ -39,6 +39,34 @@ class LottoBall extends HTMLElement {
 
 customElements.define('lotto-ball', LottoBall);
 
+function saveHistory(numbers) {
+    let history = JSON.parse(localStorage.getItem('lottoHistory')) || [];
+    history.unshift({ date: new Date().toLocaleString(), numbers: numbers });
+    if (history.length > 10) history = history.slice(0, 10); // Keep last 10 entries
+    localStorage.setItem('lottoHistory', JSON.stringify(history));
+}
+
+function renderHistory() {
+    const historyList = document.getElementById('history-list');
+    historyList.innerHTML = '';
+    const history = JSON.parse(localStorage.getItem('lottoHistory')) || [];
+    
+    if (history.length === 0) {
+        historyList.innerHTML = '<li style="text-align: center; color: #888;">기록이 없습니다.</li>';
+        return;
+    }
+
+    history.forEach(item => {
+        const li = document.createElement('li');
+        li.style.cssText = 'padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;';
+        li.innerHTML = `
+            <span style="font-size: 0.8em; color: #666;">${item.date}</span>
+            <span style="font-weight: bold;">${item.numbers.join(', ')}</span>
+        `;
+        historyList.appendChild(li);
+    });
+}
+
 document.getElementById('draw-button').addEventListener('click', () => {
     const lottoNumbersContainer = document.getElementById('lotto-numbers');
     lottoNumbersContainer.innerHTML = '';
@@ -46,12 +74,38 @@ document.getElementById('draw-button').addEventListener('click', () => {
     while (numbers.size < 7) {
         numbers.add(Math.floor(Math.random() * 45) + 1);
     }
+    
+    const sortedNumbers = [...numbers]; // No sort for random display, or sortedNumbers.sort((a,b)=>a-b) if needed.
+    // Usually lotto is sorted for easier reading, but request implies just history. Let's keep display order.
 
-    [...numbers].forEach(number => {
+    sortedNumbers.forEach(number => {
         const lottoBall = document.createElement('lotto-ball');
         lottoBall.setAttribute('number', number);
         lottoNumbersContainer.appendChild(lottoBall);
     });
+
+    saveHistory(sortedNumbers);
+});
+
+const historyButton = document.getElementById('history-button');
+const historySection = document.getElementById('history-section');
+
+historyButton.addEventListener('click', () => {
+    if (historySection.style.display === 'none') {
+        renderHistory();
+        historySection.style.display = 'block';
+        historyButton.textContent = '기록 닫기';
+    } else {
+        historySection.style.display = 'none';
+        historyButton.textContent = '기록';
+    }
+});
+
+document.getElementById('clear-history').addEventListener('click', () => {
+    if(confirm('모든 기록을 삭제하시겠습니까?')) {
+        localStorage.removeItem('lottoHistory');
+        renderHistory();
+    }
 });
 
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');

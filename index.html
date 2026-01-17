@@ -95,8 +95,17 @@
         </div>
         <h1>로또 번호 추첨기</h1>
         <div id="lotto-numbers" class="lotto-numbers"></div>
-        <button id="draw-button">추첨</button>
+        <div class="button-container" style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;">
+            <button id="draw-button">추첨</button>
+            <button id="history-button" style="background-color: #2196F3; color: white; border: none; padding: 15px 30px; font-size: 1.2em; border-radius: 8px; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);">기록</button>
+        </div>
         
+        <div id="history-section" style="display: none; margin-top: 20px; text-align: left; max-height: 300px; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 15px;">
+            <h3 style="margin-top: 0; text-align: center;">추첨 기록</h3>
+            <ul id="history-list" style="list-style: none; padding: 0;"></ul>
+            <button id="clear-history" style="display: block; margin: 10px auto 0; padding: 5px 10px; background-color: #ff5722; color: white; border: none; border-radius: 4px; cursor: pointer;">기록 삭제</button>
+        </div>
+
         <section class="description" style="margin-top: 40px; text-align: left; font-size: 0.9em; line-height: 1.6; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
             <h2 style="font-size: 1.2em; margin-bottom: 15px;">로또 번호 생성기 소개</h2>
             <p>이 <strong>무료 로또 번호 추첨기</strong>는 1부터 45까지의 숫자 중 중복되지 않는 6개의 숫자를 무작위로 추출하여 행운의 번호를 제공합니다. 복잡한 회원가입 절차 없이, 클릭 한 번으로 간편하게 오늘의 예상 번호를 받아보세요.</p>
