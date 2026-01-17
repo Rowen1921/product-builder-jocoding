@@ -60,7 +60,7 @@ function renderHistory() {
 
     history.forEach((item, index) => {
         const li = document.createElement('li');
-        li.style.cssText = 'padding: 8px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;';
+        li.style.cssText = 'padding: 8px 10px 8px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;';
         
         const deleteBtn = document.createElement('span');
         deleteBtn.innerHTML = '&times;';
