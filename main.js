@@ -41,7 +41,9 @@ customElements.define('lotto-ball', LottoBall);
 
 function saveHistory(numbers) {
     let history = JSON.parse(localStorage.getItem('lottoHistory')) || [];
-    history.unshift({ date: new Date().toLocaleString(), numbers: numbers });
+    const now = new Date();
+    const dateString = `${now.getFullYear()}. ${now.getMonth() + 1}. ${now.getDate()}.`;
+    history.unshift({ date: dateString, numbers: numbers });
     if (history.length > 10) history = history.slice(0, 10); // Keep last 10 entries
     localStorage.setItem('lottoHistory', JSON.stringify(history));
 }
@@ -62,8 +64,10 @@ function renderHistory() {
         
         const deleteBtn = document.createElement('span');
         deleteBtn.innerHTML = '&times;';
-        deleteBtn.style.cssText = 'color: red; cursor: pointer; font-weight: bold; font-size: 1.2em; line-height: 1;';
+        deleteBtn.style.cssText = 'color: #bbb; cursor: pointer; font-weight: bold; font-size: 1.2em; line-height: 1; transition: color 0.2s;';
         deleteBtn.title = '삭제';
+        deleteBtn.onmouseover = () => deleteBtn.style.color = 'red';
+        deleteBtn.onmouseout = () => deleteBtn.style.color = '#bbb';
         deleteBtn.onclick = () => deleteHistoryItem(index);
         
         const dateSpan = document.createElement('span');
