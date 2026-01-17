@@ -184,7 +184,7 @@ document.getElementById('share-kakao').addEventListener('click', () => {
             content: {
                 title: '로또 번호 추첨기',
                 description: '오늘의 행운 번호를 지금 확인해보세요!',
-                imageUrl: 'https://rowen1921.github.io/product-builder-jocoding/favicon.svg', // Update with actual image URL
+                imageUrl: 'https://rowen1921.github.io/product-builder-jocoding/og-image.svg', // Update with actual image URL
                 link: {
                     mobileWebUrl: window.location.href,
                     webUrl: window.location.href,
