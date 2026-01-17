@@ -42,7 +42,7 @@ customElements.define('lotto-ball', LottoBall);
 function saveHistory(numbers) {
     let history = JSON.parse(localStorage.getItem('lottoHistory')) || [];
     const now = new Date();
-    const dateString = `${now.getFullYear()}. ${now.getMonth() + 1}. ${now.getDate()}.`;
+    const dateString = `${(now.getMonth() + 1).toString().padStart(2, '0')}.${now.getDate().toString().padStart(2, '0')}`;
     history.unshift({ date: dateString, numbers: numbers });
     if (history.length > 10) history = history.slice(0, 10); // Keep last 10 entries
     localStorage.setItem('lottoHistory', JSON.stringify(history));
