@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rowen1921.github.io/product-builder-jocoding/sitemap.xml
