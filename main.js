@@ -56,15 +56,36 @@ function renderHistory() {
         return;
     }
 
-    history.forEach(item => {
+    history.forEach((item, index) => {
         const li = document.createElement('li');
-        li.style.cssText = 'padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;';
-        li.innerHTML = `
-            <span style="font-size: 0.8em; color: #666;">${item.date}</span>
-            <span style="font-weight: bold;">${item.numbers.join(', ')}</span>
-        `;
+        li.style.cssText = 'padding: 8px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;';
+        
+        const deleteBtn = document.createElement('span');
+        deleteBtn.innerHTML = '&times;';
+        deleteBtn.style.cssText = 'color: red; cursor: pointer; font-weight: bold; font-size: 1.2em; line-height: 1;';
+        deleteBtn.title = '삭제';
+        deleteBtn.onclick = () => deleteHistoryItem(index);
+        
+        const dateSpan = document.createElement('span');
+        dateSpan.textContent = item.date;
+        dateSpan.style.cssText = 'font-size: 0.8em; color: #666; flex-grow: 1;';
+        
+        const numbersSpan = document.createElement('span');
+        numbersSpan.textContent = item.numbers.join(', ');
+        numbersSpan.style.fontWeight = 'bold';
+
+        li.appendChild(deleteBtn);
+        li.appendChild(dateSpan);
+        li.appendChild(numbersSpan);
         historyList.appendChild(li);
     });
+}
+
+function deleteHistoryItem(index) {
+    let history = JSON.parse(localStorage.getItem('lottoHistory')) || [];
+    history.splice(index, 1);
+    localStorage.setItem('lottoHistory', JSON.stringify(history));
+    renderHistory();
 }
 
 document.getElementById('draw-button').addEventListener('click', () => {
