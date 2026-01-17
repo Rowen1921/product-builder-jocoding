@@ -72,11 +72,11 @@ function renderHistory() {
         
         const dateSpan = document.createElement('span');
         dateSpan.textContent = item.date;
-        dateSpan.style.cssText = 'font-size: 0.8em; color: #666; flex-grow: 1;';
+        dateSpan.style.cssText = 'font-size: 0.8em; color: #666; width: 40px; flex-shrink: 0;';
         
         const numbersSpan = document.createElement('span');
         numbersSpan.textContent = item.numbers.join(', ');
-        numbersSpan.style.fontWeight = 'bold';
+        numbersSpan.style.cssText = 'font-weight: bold; flex-grow: 1; text-align: right;';
 
         li.appendChild(deleteBtn);
         li.appendChild(dateSpan);
