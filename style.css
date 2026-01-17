@@ -29,7 +29,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Changed from height to min-height for mobile scrolling */
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -42,6 +42,8 @@ body {
     box-shadow: 0 10px 30px var(--shadow-color);
     transition: background-color 0.3s, box-shadow 0.3s;
     position: relative;
+    max-width: 90%; /* Ensure it doesn't overflow on small screens */
+    width: 500px;   /* Default width for desktop */
 }
 
 h1 {
@@ -130,4 +132,26 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .lotto-numbers {
+        gap: 10px;
+    }
+
+    #draw-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+    }
 }
