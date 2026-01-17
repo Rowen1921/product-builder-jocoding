@@ -54,6 +54,27 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "이 추첨기는 정말 무작위인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 자바스크립트의 표준 난수 생성 알고리즘을 사용하여 수학적으로 무작위한 결과를 제공합니다."
+        }
+      }, {
+        "@type": "Question",
+        "name": "사용료가 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "아니요, 이 서비스는 100% 무료로 제공됩니다."
+        }
+      }]
+    }
+    </script>
     
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -75,6 +96,22 @@
         <h1>로또 번호 추첨기</h1>
         <div id="lotto-numbers" class="lotto-numbers"></div>
         <button id="draw-button">추첨</button>
+        
+        <section class="description" style="margin-top: 40px; text-align: left; font-size: 0.9em; line-height: 1.6; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
+            <h2 style="font-size: 1.2em; margin-bottom: 15px;">로또 번호 생성기 소개</h2>
+            <p>이 <strong>무료 로또 번호 추첨기</strong>는 1부터 45까지의 숫자 중 중복되지 않는 6개의 숫자를 무작위로 추출하여 행운의 번호를 제공합니다. 복잡한 회원가입 절차 없이, 클릭 한 번으로 간편하게 오늘의 예상 번호를 받아보세요.</p>
+            
+            <h3 style="font-size: 1.1em; margin-top: 25px; margin-bottom: 15px;">자주 묻는 질문 (FAQ)</h3>
+            <details style="margin-bottom: 10px; padding: 10px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+                <summary style="cursor: pointer; font-weight: bold;">이 추첨기는 정말 무작위인가요?</summary>
+                <p style="margin-top: 10px; margin-bottom: 0;">네, 자바스크립트(JavaScript)의 표준 난수 생성 알고리즘(Math.random)을 사용하여 수학적으로 무작위한 결과를 제공합니다.</p>
+            </details>
+            <details style="padding: 10px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+                <summary style="cursor: pointer; font-weight: bold;">사용료가 있나요?</summary>
+                <p style="margin-top: 10px; margin-bottom: 0;">아니요, 이 서비스는 100% 무료로 제공되며 별도의 비용을 청구하지 않습니다.</p>
+            </details>
+        </section>
+
         <footer style="margin-top: 30px; font-size: 0.8em; color: var(--text-color); opacity: 0.8;">
             <p>&copy; 2026 로또 번호 추첨기. All rights reserved.</p>
         </footer>
