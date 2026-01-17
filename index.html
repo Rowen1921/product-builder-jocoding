@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" integrity="sha384-6MFdIr0zOira1CHQkedUqJVql0YtcZA1P0nbPrQYJXVJZUkTk/oX4U9GhUIs3/z8" crossorigin="anonymous"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRLGM08N1S"></script>
     <script>
@@ -139,6 +140,25 @@
                 <p style="margin-top: 10px; margin-bottom: 0;">아니요, 이 서비스는 100% 무료로 제공되며 별도의 비용을 청구하지 않습니다.</p>
             </details>
         </section>
+
+        <!-- SNS Share Section -->
+        <div class="share-container" style="margin-top: 30px; text-align: center;">
+            <p style="margin-bottom: 10px; font-weight: bold; color: var(--text-color);">친구에게 행운 공유하기</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button id="share-kakao" style="background: #FEE500; border: none; border-radius: 50%; width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; justify-content: center;" aria-label="카카오톡 공유">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C7.58 3 4 5.79 4 9.24C4 11.41 5.43 13.33 7.63 14.4L6.68 18.06C6.61 18.33 6.9 18.57 7.15 18.4L11.24 15.65C11.49 15.67 11.74 15.68 12 15.68C16.42 15.68 20 12.89 20 9.44C20 5.99 16.42 3 12 3Z" fill="#3C1E1E"/></svg>
+                </button>
+                <button id="share-twitter" style="background: #000000; border: none; border-radius: 50%; width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; justify-content: center;" aria-label="X (트위터) 공유">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </button>
+                <button id="share-facebook" style="background: #1877F2; border: none; border-radius: 50%; width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; justify-content: center;" aria-label="페이스북 공유">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 16.84 5.44 20.87 10 21.8V15H8V12H10V9.5C10 7.57 11.71 6 13.5 6H16V9H14C13.06 9 13 9.93 13 10.5V12H16V15H13V21.95C18.05 21.45 22 17.19 22 12Z"/></svg>
+                </button>
+                <button id="share-link" style="background: #888; border: none; border-radius: 50%; width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center; justify-content: center;" aria-label="링크 복사">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                </button>
+            </div>
+        </div>
 
         <footer style="margin-top: 30px; font-size: 0.8em; color: var(--text-color); opacity: 0.8;">
             <p>&copy; 2026 로또 번호 추첨기. All rights reserved.</p>

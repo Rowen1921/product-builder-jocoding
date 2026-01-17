@@ -164,3 +164,59 @@ function switchTheme(e) {
 }
 
 toggleSwitch.addEventListener('change', switchTheme, false);
+
+// SNS Sharing
+const shareUrl = encodeURIComponent(window.location.href);
+const shareTitle = encodeURIComponent("로또 번호 추첨기 - 오늘의 행운 번호를 무료로 확인하세요!");
+
+// Initialize Kakao SDK (Replace YOUR_JAVASCRIPT_KEY with actual key if you have one, otherwise it won't work fully)
+// For this demo, we'll try to use a generic implementation or guide the user.
+try {
+    Kakao.init('c089c8172def97eb00c07217cae17495'); // Using a demo/placeholder key. User needs their own.
+} catch(e) {
+    console.warn("Kakao SDK init failed (expected if key is invalid)");
+}
+
+document.getElementById('share-kakao').addEventListener('click', () => {
+    try {
+        Kakao.Share.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '로또 번호 추첨기',
+                description: '오늘의 행운 번호를 지금 확인해보세요!',
+                imageUrl: 'https://rowen1921.github.io/product-builder-jocoding/favicon.svg', // Update with actual image URL
+                link: {
+                    mobileWebUrl: window.location.href,
+                    webUrl: window.location.href,
+                },
+            },
+            buttons: [
+                {
+                    title: '번호 뽑으러 가기',
+                    link: {
+                        mobileWebUrl: window.location.href,
+                        webUrl: window.location.href,
+                    },
+                },
+            ],
+        });
+    } catch (err) {
+        alert('카카오톡 공유 기능을 사용할 수 없습니다. (API 키 설정 필요)');
+    }
+});
+
+document.getElementById('share-twitter').addEventListener('click', () => {
+    window.open(`https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`, '_blank');
+});
+
+document.getElementById('share-facebook').addEventListener('click', () => {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank');
+});
+
+document.getElementById('share-link').addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('링크가 복사되었습니다!');
+    }).catch(() => {
+        alert('링크 복사에 실패했습니다.');
+    });
+});
